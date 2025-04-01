@@ -50,13 +50,10 @@ export function LendingFormMock({ activeTab }: { activeTab: string }) {
               <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
                 <Coins className="h-4 w-4 text-blue-500" />
               </div>
-              <Button
-                variant="outline"
-                className="h-8 text-md flex items-center gap-1 rounded-lg"
-              >
-                Select a token
-                <ChevronDown className="h-3 w-3" />
-              </Button>
+              <div className="flex items-center gap-1 cursor-pointer">
+                <div className="font-medium text-blue-500">Select a token</div>
+                <ChevronDown className="h-3 w-3 text-blue-500" />
+              </div>
             </div>
             <Input
               type="text"
