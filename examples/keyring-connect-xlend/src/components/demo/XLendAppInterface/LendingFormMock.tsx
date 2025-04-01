@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { ChevronDown, ArrowDown, CoinsIcon, Coins } from "lucide-react";
 
 export function LendingFormMock({ activeTab }: { activeTab: string }) {
