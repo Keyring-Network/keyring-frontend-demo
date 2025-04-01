@@ -34,6 +34,10 @@ export default function KeyringConnectDemo() {
 
   return (
     <div className="flex flex-col gap-4">
+      <div className="flex justify-between items-center">
+        <ViewModeToggle viewMode={viewMode} setViewMode={setViewMode} />
+      </div>
+
       <StepNavigation
         steps={VERIFICATION_STEPS}
         activeTab={activeTab}
@@ -41,10 +45,6 @@ export default function KeyringConnectDemo() {
           setActiveTab(id as "install" | "start" | "progress" | "completed")
         }
       />
-
-      <div className="flex justify-between items-center">
-        <ViewModeToggle viewMode={viewMode} setViewMode={setViewMode} />
-      </div>
 
       {/* Content Area with Preview and Code Overlay */}
       <div className="relative">
