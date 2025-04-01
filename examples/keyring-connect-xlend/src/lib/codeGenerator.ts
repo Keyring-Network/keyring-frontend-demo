@@ -67,15 +67,23 @@ import { Icon } from "./Icon";`;
 
   // Generate the specific content for the current tab
   let tabSpecificContent = "";
+  let relevantFunctions = "";
 
   if (activeTab === "install") {
+    // For install tab, we need extension check and launch functions
+    relevantFunctions = `${extensionCheck}
+    
+  ${launchExtensionFunction}`;
+
     tabSpecificContent = `
     return (
       <div className="p-6 border rounded-lg bg-white border-gray-200">
         <div className="flex items-start gap-4">
           <Icon activeTab="install" />
           <div className="flex-1">
-            <h3 className="font-medium text-gray-900">KYC Verification Required</h3>
+            <h3 className="font-medium text-gray-900">
+              Keyring Connect Verification Required
+            </h3>
             <p className="text-sm text-gray-600 mt-1">
               Install the Keyring extension to complete identity verification.
             </p>
@@ -90,13 +98,18 @@ import { Icon } from "./Icon";`;
       </div>
     );`;
   } else if (activeTab === "start") {
+    // For start tab, we need launch function
+    relevantFunctions = `${launchExtensionFunction}`;
+
     tabSpecificContent = `
     return (
       <div className="p-6 border rounded-lg bg-white border-gray-200">
         <div className="flex items-start gap-4">
           <Icon activeTab="start" />
           <div className="flex-1">
-            <h3 className="font-medium text-gray-900">Complete KYC Verification</h3>
+            <h3 className="font-medium text-gray-900">
+              Complete Keyring Connect Verification
+            </h3>
             <p className="text-sm text-gray-600 mt-1">
               Verify your identity to access lending features.
             </p>
@@ -109,6 +122,9 @@ import { Icon } from "./Icon";`;
       </div>
     );`;
   } else if (activeTab === "progress") {
+    // For progress tab, we need check status function
+    relevantFunctions = `${checkStatusFunction}`;
+
     tabSpecificContent = `
     return (
       <div className="p-6 border rounded-lg bg-white border-gray-200">
@@ -145,6 +161,9 @@ import { Icon } from "./Icon";`;
       </div>
     );`;
   } else if (activeTab === "completed") {
+    // For completed tab, we don't need any special functions
+    relevantFunctions = "";
+
     tabSpecificContent = `
     return (
       <div className="p-6 border rounded-lg bg-green-50 border-green-200">
@@ -169,17 +188,12 @@ import { Icon } from "./Icon";`;
     );`;
   }
 
-  // Assemble the complete component code
+  // Assemble the complete component code with only the relevant functions
   return `${commonImports}
 
-export function KycModule({ activeTab }: { activeTab: string }) {
+export function KeyringConnectModule({ activeTab }: { activeTab: string }) {
   ${stateSetup}
-
-  ${extensionCheck}
-
-  ${launchExtensionFunction}
-
-  ${checkStatusFunction}
+${relevantFunctions}
 
   ${tabSpecificContent}
 }`;
