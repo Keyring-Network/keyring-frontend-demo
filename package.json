@@ -1,0 +1,6 @@
+{
+  "name": "keyring-frontend-demo",
+  "description": "Keyring Frontend Demo Apps",
+  "version": "1.0.0",
+  "main": "index.js"
+}
