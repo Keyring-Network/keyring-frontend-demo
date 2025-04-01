@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GithubIcon } from "lucide-react";
 import { Badge } from "./badge";
 import { Button } from "./button";
 import { KeyringLogo } from "./keyring-logo";
@@ -17,12 +17,23 @@ export function Header() {
           variant="outline"
           onClick={() => {
             window.open(
+              "https://github.com/Keyring-Network/keyring-frontend-demo/tree/master/examples/keyring-connect-xlend",
+              "_blank"
+            );
+          }}
+        >
+          View Source Code <GithubIcon className="w-4 h-4" />
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            window.open(
               "https://www.npmjs.com/package/@keyringnetwork/keyring-connect-sdk",
               "_blank"
             );
           }}
         >
-          Explore the Docs <ArrowRight className="w-4 h-4" />
+          Explore the SDK <ArrowRight className="w-4 h-4" />
         </Button>
       </div>
     </header>
