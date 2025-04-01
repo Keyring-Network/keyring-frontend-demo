@@ -23,15 +23,16 @@ export function StepNavigation({
       <Tooltip>
         <TooltipTrigger>
           <div className="flex items-center gap-2 mb-4">
-            <h2 className="text-md font-medium">KYC Integration Flow</h2>
+            <h2 className="text-md font-medium">Verification Flow</h2>
             <InfoIcon className="w-4 h-4" />
           </div>
         </TooltipTrigger>
         <TooltipContent>
           <p>
-            Step through the KYC verification process for demo purposes. In a
-            production use case, the KYC verification process would progress
-            automatically based on the user&apos;s actions.
+            Step through the Keyring Connect verification process for demo
+            purposes. In a production use case, the Keyring Connect verification
+            process would progress automatically based on the user&apos;s
+            actions.
           </p>
         </TooltipContent>
       </Tooltip>

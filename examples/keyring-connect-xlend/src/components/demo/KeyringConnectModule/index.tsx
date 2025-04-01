@@ -9,19 +9,19 @@ import {
 } from "@keyringnetwork/keyring-connect-sdk";
 import { Icon } from "./Icon";
 
-interface KycModuleProps {
+interface KeyringConnectModuleProps {
   activeTab: string;
 }
 
 /**
- * The `KycModule` component showcases how the KYC verification process with the Keyring Connect SDK can be implemented.
- * The `KycModule` is used in the `XLendAppInterface` component for demo purposes.
+ * The `KeyringConnectModule` component showcases how the Keyring Connect verification process can be implemented.
+ * The `KeyringConnectModule` is used in the `XLendAppInterface` component for demo purposes.
  *
- * @param {string} activeTab - The current active tab in the KYC verification process.
- * NOTE: We use `activeTab` to step through the KYC verification process for demo purposes.
- * In a production use case, the KYC verification process would progress automatically based on the user's actions.
+ * @param {string} activeTab - The current active tab in the Keyring Connect verification process.
+ * NOTE: We use `activeTab` to step through the Keyring Connect verification process for demo purposes.
+ * In a production use case, the Keyring Connect verification process would progress automatically based on the user's actions.
  */
-export function KycModule({ activeTab }: KycModuleProps) {
+export function KeyringConnectModule({ activeTab }: KeyringConnectModuleProps) {
   const [isInstalled, setIsInstalled] = useState<boolean | undefined>(
     undefined
   );
@@ -62,7 +62,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
       // NOTE: `KeyringConnect.launchExtension` takes care of checking if the extension is installed.
       // If the extension is not installed, the user will be redirected to the extension's install page.
       // The user gets redirected back to the app after the extension is installed.
-      // If the extension is installed, the extension will be launched and the user can start the KYC verification process.
+      // If the extension is installed, the extension will be launched and the user can start the Keyring Connect verification process.
       await KeyringConnect.launchExtension(exmapleConfig);
     } catch (error) {
       console.error("Failed to launch extension:", error);
@@ -74,7 +74,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
     setIsLoading(true);
     try {
       // The `extensionState.user.credential_status` can be used to check if the user has a valid credential.
-      // NOTE: The `credential_status` is only available if the user has completed the KYC verification process was launched through the `launchExtension` function.
+      // NOTE: The `credential_status` is only available if the user has completed the Keyring Connect verification process was launched through the `launchExtension` function.
       // The recommended approach is to fetch the credential status directly from chain via an RPC call, and display the status to the user independently of the `extensionState.user?.credential_status`.
       const state = await KeyringConnect.getExtensionState();
       setExtensionState(state);
@@ -92,7 +92,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
         disabled={!isVerified}
         variant={isVerified ? "default" : "secondary"}
       >
-        {isVerified ? "Lend" : "Complete KYC to continue"}
+        {isVerified ? "Lend" : "Complete Verification to continue"}
       </Button>
     );
   };
@@ -103,7 +103,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
         return (
           <>
             <h3 className="font-medium text-gray-900">
-              KYC Verification Required
+              Keyring Connect Verification Required
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               Install the Keyring extension to complete identity verification.
@@ -124,7 +124,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
         return (
           <>
             <h3 className="font-medium text-gray-900">
-              Complete KYC Verification
+              Complete Keyring Connect Verification
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               Verify your identity to access lending features.
@@ -145,7 +145,7 @@ export function KycModule({ activeTab }: KycModuleProps) {
         return (
           <>
             <h3 className="font-medium text-gray-900">
-              Verification In Progress
+              Keyring Connect Verification In Progress
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               We&apos;re verifying your identity. This may take a few minutes.
@@ -165,7 +165,8 @@ export function KycModule({ activeTab }: KycModuleProps) {
                   Wallet Address: {extensionState.user?.wallet_address}
                 </div>
                 <div className="mt-2 text-xs text-gray-500">
-                  Credential Status: {extensionState.user?.credential_status}
+                  Credential Status:{" "}
+                  {extensionState.user?.credential_status || "unknown"}
                 </div>
               </>
             ) : (

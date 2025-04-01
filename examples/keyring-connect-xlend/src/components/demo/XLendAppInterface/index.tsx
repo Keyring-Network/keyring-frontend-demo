@@ -1,4 +1,4 @@
-import { KycModule } from "@/components/demo/KycModule/index";
+import { KeyringConnectModule } from "@/components/demo/KeyringConnectModule/index";
 import { AppHeader } from "./AppHeader";
 import { LendingFormMock } from "./LendingFormMock";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,8 +19,8 @@ export function XLendAppInterface({ activeTab }: XLendAppInterfaceProps) {
               <LendingTabsMock />
               <LendingFormMock activeTab={activeTab} />
 
-              {/* KYC Module - The main focus of the demo */}
-              <KycModule activeTab={activeTab} />
+              {/* Keyring Connect Module - The main focus of the demo */}
+              <KeyringConnectModule activeTab={activeTab} />
             </CardContent>
           </Card>
         </div>

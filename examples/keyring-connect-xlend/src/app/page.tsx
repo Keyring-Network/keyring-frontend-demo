@@ -10,8 +10,8 @@ import { BrowserFrame } from "@/components/demo/BrowserFrame";
 import { XLendAppInterface } from "@/components/demo/XLendAppInterface/index";
 import { CodeOverlay } from "@/components/demo/CodeOverlay";
 
-// KYC process steps
-const KYC_STEPS = [
+// Verification process steps
+const VERIFICATION_STEPS = [
   { id: "install", label: "Install Extension", icon: Blocks },
   { id: "start", label: "Start Verification", icon: UserIcon },
   { id: "progress", label: "In Progress", icon: Loader },
@@ -35,7 +35,7 @@ export default function KeyringConnectDemo() {
   return (
     <div className="flex flex-col gap-4">
       <StepNavigation
-        steps={KYC_STEPS}
+        steps={VERIFICATION_STEPS}
         activeTab={activeTab}
         setActiveTab={(id: string) =>
           setActiveTab(id as "install" | "start" | "progress" | "completed")
