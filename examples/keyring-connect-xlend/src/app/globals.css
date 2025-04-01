@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
-
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -100,29 +98,4 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-
-.code-block {
-  color: #e6e6e6;
-}
-
-.code-block .keyword {
-  color: #569cd6;
-}
-
-.code-block .string {
-  color: #ce9178;
-}
-
-.code-block .comment {
-  color: #6a9955;
-}
-
-.code-block .function {
-  color: #dcdcaa;
-}
-
-.code-block .type {
-  color: #4ec9b0;
 }

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Code, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { KycModule } from "@/components/demo/KycModule/index";
+import { KeyringConnectModule } from "@/components/demo/KeyringConnectModule/index";
 import { generateModuleCode } from "@/lib/codeGenerator";
 import hljs from "highlight.js/lib/core";
 import typescript from "highlight.js/lib/languages/typescript";
+import "highlight.js/styles/atom-one-dark.css";
 
 interface CodeOverlayProps {
   activeTab: string;
@@ -21,7 +22,7 @@ export function CodeOverlay({
   hljs.registerLanguage("typescript", typescript);
 
   const code = generateModuleCode(activeTab);
-  
+
   const highlightedCode = hljs.highlight(code, {
     language: "typescript",
   }).value;
@@ -42,25 +43,12 @@ export function CodeOverlay({
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.3 }}
         >
-          <h3 className="text-lg font-medium mb-4">KYC Module Preview</h3>
+          <h3 className="text-lg font-medium mb-4">
+            Keyring Connect Module Preview
+          </h3>
 
-          {/* Isolated KYC Module */}
-          <KycModule activeTab={activeTab} />
-
-          <div className="mt-4 text-sm text-gray-500">
-            <p>
-              Current state:{" "}
-              <span className="font-medium capitalize">
-                {activeTab === "install"
-                  ? "Installation"
-                  : activeTab === "start"
-                  ? "Start Verification"
-                  : activeTab === "progress"
-                  ? "In Progress"
-                  : "Completed"}
-              </span>
-            </p>
-          </div>
+          {/* Isolated Keyring Connect Module */}
+          <KeyringConnectModule activeTab={activeTab} />
         </motion.div>
 
         {/* Right side - Code */}
@@ -73,7 +61,7 @@ export function CodeOverlay({
           <div className="flex justify-between items-center p-4 border-b border-gray-800">
             <div className="flex items-center gap-2">
               <Code className="h-4 w-4 text-gray-400" />
-              <span className="font-medium">KycModule.tsx</span>
+              <span className="font-medium">KeyringConnectModule.tsx</span>
             </div>
             <Button
               variant="ghost"
